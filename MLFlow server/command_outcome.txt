@@ -1,0 +1,16 @@
+#To Build Docker
+docker build -t mlflowserver -f Docker . --no-cache
+
+
+#If the build was successful you can start the container with the following command:
+
+docker run -p 5000:5000 --env MLFLOW_SERVER_DEFAULT_ARTIFACT_ROOT="wasbs://<container>@<storageAccount>.blob.core.windows.net/mlflowartifact" --env AZURE_STORAGE_ACCESS_KEY="<Key>" -it mlflowserver:latest
+
+docker run -p 5000:5000 --env MLFLOW_SERVER_DEFAULT_ARTIFACT_ROOT="wasbs://<container>@<storageAccount>.blob.core.windows.net/mlflowartifact" --env AZURE_STORAGE_ACCESS_KEY="<Key>" -it mlmeshcontainerregistry.azurecr.io/mlflowserver-latest
+
+
+#Or With the below commands if you wish to point to the default env variables on the image
+docker run -p 5000:5000 -it mlflowserver:latest
+docker run -p 5000:5000 -it mlmeshcontainerregistry.azurecr.io/mlflowserver-latest
+
+#Please note that the port is by default on 5000

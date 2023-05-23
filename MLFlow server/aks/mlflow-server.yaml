@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlflowserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlflowserver
+  template:
+    metadata:
+      labels:
+        app: mlflowserver
+    spec:
+      containers:
+      - name: mlflowserver
+        image: mlmeshcontainerregistry.azurecr.io/mlflowserver-latest:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflowserver
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: mlflowserver
