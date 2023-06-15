@@ -3,7 +3,7 @@ FROM python:3.10.8
 # build variables.
 ENV DEBIAN_FRONTEND noninteractive
 ENV MLFLOW_SERVER_HOST 0.0.0.0
-ENV MLFLOW_SERVER_DEFAULT_ARTIFACT_ROOT "wasbs:/<container>@<StorageAccount>.blob.core.windows.net"
+ENV MLFLOW_SERVER_DEFAULT_ARTIFACT_ROOT "wasbs://<container>@<StorageAccount>.blob.core.windows.net"
 ENV AZURE_STORAGE_ACCESS_KEY "<Key>"
 ENV BACKEND_URI "mssql+pyodbc://<UserName>:<Password>@<ServerName>.database.windows.net:1433/<DatabaseName>?driver=ODBC+Driver+17+for+SQL+Server"
 

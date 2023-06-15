@@ -1,5 +1,9 @@
 .DS_Store
 .env
+# exclude everything
+mlflow_data/*
+# exception to the rule
+!mlflow_data/.gitkeep 
 output
 env
 
